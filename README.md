@@ -20,6 +20,7 @@ A full-stack Ruby on Rails application to help users track personal habits and m
 
 - Ruby 3.2.1
 - Rails 8.0.2
+- Node v20.18.1
 - PostgreSQL (Database)
 - Tailwind CSS (Styling)
 - Devise (Authentication)
