@@ -7,8 +7,6 @@
         <% if user_signed_in? %>
         <span class="mr-4"><%= current_user.email %></span>
         <%= link_to "Habits", habits_path, class: "mr-4 hover:underline" %>
-        <%#= link_to "Logout", destroy_user_session_path, method: :delete, class: "hover:underline text-red-300" %>
-        <%#= link_to "Logout", logout_path, class: "hover:underline text-red-300" %>
         <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "hover:underline text-red-300" %>
         <% else %>
         <%= link_to "Login", new_user_session_path, class: "mr-4 hover:underline" %>
