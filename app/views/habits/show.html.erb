@@ -1,0 +1,32 @@
+<h1 class="text-2xl font-bold mb-4"><%= @habit.name %> - Calendar View</h1>
+
+<div class="grid grid-cols-7 gap-2 text-center text-sm font-semibold mb-2">
+    <% Date::ABBR_DAYNAMES.each do |day| %>
+    <div class="text-gray-700"><%= day %></div>
+    <% end %>
+</div>
+
+<%
+  today = Date.today
+  first_day = today.beginning_of_month
+  last_day = today.end_of_month
+  checkin_dates = @habit.habit_checkins.pluck(:date)
+%>
+
+<div class="grid grid-cols-7 gap-2">
+    <% (first_day.beginning_of_week(:sunday)..last_day.end_of_week(:sunday)).each do |date| %>
+    <% if date.month != today.month %>
+    <div class="p-4 border rounded bg-gray-200 text-gray-400">
+        <%= date.day %>
+    </div>
+    <% elsif checkin_dates.include?(date) %>
+    <div class="p-4 border rounded bg-green-400 text-white font-bold">
+        <%= date.day %>
+    </div>
+    <% else %>
+    <div class="p-4 border rounded bg-gray-300 text-gray-600">
+        <%= date.day %>
+    </div>
+    <% end %>
+    <% end %>
+</div>
